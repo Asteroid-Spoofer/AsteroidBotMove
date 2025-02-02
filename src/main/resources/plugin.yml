@@ -1,0 +1,39 @@
+name: AsteroidBotMove
+version: '${version}'
+main: me.serbob.asteroidbotmove.AsteroidBotMove
+api-version: '1.20'
+
+timer: 50
+loop:
+  1:
+    commands:
+      "warp {player} mines"
+    locations:
+      place1:
+        chance: 50.0
+        minX: 0.0
+        minZ: 49.0
+        maxX: 6.0
+        maxZ: 54.0
+      place2:
+        chance: 90.0
+        minX: 0.0
+        minZ: 0.0
+        maxX: 10.0
+        maxZ: 10.0
+  2:
+    commands:
+      "spawn {player}"
+    locations:
+      place1:
+        chance: 50.0
+        minX: 0.0
+        minZ: 49.0
+        maxX: 6.0
+        maxZ: 54.0
+      place2:
+        chance: 90.0
+        minX: 0.0
+        minZ: 0.0
+        maxX: 10.0
+        maxZ: 10.0

@@ -1,0 +1,69 @@
+# Asteroid Bot Move Configuration
+# -----------------------------
+# This extension allows fake players to move between specified locations
+# and execute commands in a loop pattern.
+
+# Time between movements (in seconds)
+# This determines how often the bot will move to a new location
+timer: 50
+
+# Movement Loops Configuration
+# The extension alternates between loop 1 and loop 2
+loop:
+  # First Loop Configuration
+  1:
+    # Commands to execute when this loop triggers
+    # {player} will be replaced with the bot's name
+    # You can add multiple commands that will execute in order
+    commands:
+      - "warp {player} mines"
+
+    # Location pools for this loop
+    # The bot will randomly select one location based on the chances
+    location:
+      # You can name these whatever you want (place1, mines, spawn, etc)
+      place1:
+        # Chance of this location being selected (percentage)
+        # All chances in a loop should add up to 100 for predictable behavior
+        chance: 50.0
+
+        # World where this location is
+        # If world isn't found, will use player's current world
+        world: "world"
+
+        # Coordinates range
+        # Bot will pick a random position between min and max
+        minX: 0.0
+        maxX: 6.0
+        minZ: 49.0
+        maxZ: 54.0
+
+        # Optional: Fixed Y coordinate
+        # If not set, will use the ground level
+        y: 64.0
+
+      place2:
+        chance: 50.0
+        world: "world_mines"  # Example of different world
+        minX: 0.0
+        maxX: 10.0
+        minZ: 0.0
+        maxZ: 10.0
+        y: 80.0  # Different height
+
+  # Second Loop Configuration
+  2:
+    # Commands for second loop
+    commands:
+      - "spawn {player}"
+
+    # Locations for second loop
+    location:
+      spawn_area:
+        chance: 100.0  # 100% chance - only one location
+        world: "world"
+        minX: -10.0
+        maxX: 10.0
+        minZ: -10.0
+        maxZ: 10.0
+        y: 100.0
